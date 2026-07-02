@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BotPanel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="titlebar">
+  <span class="titlebar-label">BOTPANEL &middot; DASHBOARD</span>
+  <div class="titlebar-controls">
+    <button class="tb-btn" id="min-btn">&#8211;</button>
+    <button class="tb-btn close" id="close-btn">&#10005;</button>
+  </div>
+</div>
+
+<div class="shell">
+  <div class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">BotPanel</div>
+    </div>
+
+    <div class="nav-item active" data-view="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+      Dashboard
+    </div>
+    <div class="nav-item" data-view="bots">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg>
+      Bots
+    </div>
+    <div class="nav-item" data-view="admin">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Admin
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="status-pill"><span class="dot"></span> Session active</div>
+      <button class="logout-btn" id="logout-btn">Log Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- DASHBOARD VIEW -->
+    <div class="view active" id="view-dashboard">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Dashboard</h1>
+          <div class="page-sub">Overview of your BotPanel workspace</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Bots Configured</div>
+          <div class="stat-value accent" id="stat-bots">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Active Sessions</div>
+          <div class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Servers Tracked</div>
+          <div class="stat-value" id="stat-servers">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Uptime</div>
+          <div class="stat-value success">&mdash;</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Activity</h3></div>
+        <div class="panel-body">
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <p class="empty-title">Nothing to show yet</p>
+            <p>Activity will appear here once bots are configured.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTS VIEW -->
+    <div class="view" id="view-bots">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Bots</h1>
+          <div class="page-sub">Configured bot profiles for this workspace</div>
+        </div>
+      </div>
+
+      <div class="bots-toolbar">
+        <button class="btn-accent" id="add-bot-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add Bot
+        </button>
+      </div>
+
+      <div class="panel">
+        <div id="bots-empty" class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V5a4 4 0 0 1 8 0v3"/></svg>
+          <p class="empty-title">No bots yet</p>
+          <p>Click "Add Bot" to save a profile. Nothing connects automatically &mdash; profiles are stored locally only.</p>
+        </div>
+        <table class="bot-table" id="bots-table" style="display:none;">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Server</th>
+              <th>Auth Type</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="bots-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ADMIN VIEW -->
+    <div class="view" id="view-admin">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Admin</h1>
+          <div class="page-sub">Workspace and session details</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h3>Session</h3></div>
+        <div class="panel-body admin-grid">
+          <div>
+            <div class="field"><label>Signed in as</label><div class="field-static" id="admin-session">&mdash;</div></div>
+          </div>
+          <div>
+            <div class="field"><label>Build</label><div class="field-static">BotPanel UI v1.0.0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ADD BOT MODAL -->
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <h3 class="modal-title">Add Bot</h3>
+    <p class="modal-sub">Save a bot profile to this workspace.</p>
+
+    <div class="field">
+      <label>Bot Name</label>
+      <input type="text" id="bot-name" placeholder="e.g. Farm Bot 1">
+    </div>
+    <div class="field">
+      <label>Server IP : Port</label>
+      <input type="text" id="bot-server" placeholder="play.example.com:25565">
+    </div>
+    <div class="field">
+      <label>Auth Token / Identifier</label>
+      <input type="text" id="bot-token" placeholder="pasted here, stored locally only">
+    </div>
+
+    <div class="notice">This screen only saves your entry to this device. No connection is made — bot-joining logic isn't included in this build.</div>
+
+    <div class="modal-actions">
+      <button class="btn-ghost" id="modal-cancel">Cancel</button>
+      <button class="btn-accent" id="modal-save">Save Bot</button>
+    </div>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

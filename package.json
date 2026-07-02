@@ -1,0 +1,28 @@
+{
+  "name": "botpanel",
+  "version": "1.0.0",
+  "description": "BotPanel UI Shell",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-builder --win"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.botpanel.app",
+    "productName": "BotPanel",
+    "win": {
+      "target": "nsis",
+      "icon": "src/icon.png"
+    },
+    "files": [
+      "main.js",
+      "src/**/*"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BotPanel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="titlebar">
+  <span class="titlebar-label">BOTPANEL &middot; AUTH</span>
+  <div class="titlebar-controls">
+    <button class="tb-btn" id="min-btn">&#8211;</button>
+    <button class="tb-btn close" id="close-btn">&#10005;</button>
+  </div>
+</div>
+
+<div class="grid-bg"></div>
+
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-signal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 L4 6 v6 c0 5 3.5 8.5 8 10 c4.5-1.5 8-5 8-10 V6 Z"/>
+      </svg>
+    </div>
+    <h1 class="login-title">BotPanel</h1>
+    <p class="login-sub">Sign in to access the control dashboard</p>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="account">Account</div>
+      <div class="tab" data-tab="license">License Key</div>
+    </div>
+
+    <!-- Account login -->
+    <div id="panel-account">
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="admin" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;">
+      </div>
+      <button class="btn-primary" id="account-login-btn">Sign In</button>
+    </div>
+
+    <!-- License login -->
+    <div id="panel-license" style="display:none;">
+      <div class="field">
+        <label>License Key</label>
+        <div class="license-row">
+          <input type="text" id="license-input" placeholder="XXXX-XXXX-XXXX-XXXX">
+          <button class="btn-gen" id="generate-btn">Generate</button>
+        </div>
+        <div class="generated-note" id="generated-note">New license generated &amp; ready to activate below.</div>
+      </div>
+      <button class="btn-primary" id="license-login-btn">Activate &amp; Enter</button>
+    </div>
+
+    <div class="error-msg" id="error-msg"></div>
+    <p class="hint">Demo credentials &mdash; admin / admin123</p>
+  </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>
