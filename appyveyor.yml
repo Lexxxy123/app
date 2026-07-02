@@ -1,0 +1,14 @@
+image: Visual Studio 2022
+
+build: off
+
+install:
+  - node --version
+  - npm install
+
+build_script:
+  - npx electron-builder --win
+
+artifacts:
+  - path: dist\*.exe
+    name: windows-build
