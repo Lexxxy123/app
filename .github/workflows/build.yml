@@ -1,29 +1,14 @@
-name: Build Windows App
+image: Visual Studio 2022
 
-on:
-  push:
-    branches: [main]
+build: off
 
-jobs:
-  build:
-    runs-on: windows-latest
+install:
+  - node --version
+  - npm install
 
-    steps:
-      - uses: actions/checkout@v4
+build_script:
+  - npx electron-builder --win
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npx electron-builder --win
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: windows-build
-          path: dist/*.exe
+artifacts:
+  - path: dist\*.exe
+    name: windows-build
